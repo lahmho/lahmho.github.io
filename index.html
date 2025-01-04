@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L41N Ventures - Technology Investment Fund</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        repeating-linear-gradient(45deg, #1a1a1a 0%, #1a1a1a 10%, #222 10%, #222 20%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav {
+            background: #1a1a1a;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #00ff88;
+        }
+
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .portfolio-item {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-item h3 {
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00ff88;
+        }
+
+        @media (max-width: 768px) {
+            .nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>L41N VENTURES</h1>
+        <p>Investing in the Future of Technology</p>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#focus">Investment Focus</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#team">Team</a></li>
+        </ul>
+    </nav>
+
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>L41N Ventures is a leading venture capital firm focused on early-stage investments in Gaming, AI, Blockchain, Fintech, and SaaS startups. We partner with visionary entrepreneurs who are reshaping the digital landscape.</p>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">$100M+</div>
+                <div>Assets Under Management</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div>Portfolio Companies</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div>Focus Sectors</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="focus" class="section">
+        <h2>Investment Focus</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <h3>Gaming</h3>
+                <p>- Web3 Gaming<br>
+                   - Mobile Game Development<br>
+                   - Game Infrastructure<br>
+                   - eSports Platforms<br>
+                   - Gaming Communities</p>
+            </div>
+            <div class="portfolio-item">
+                <h3>Artificial Intelligence</h3>
+                <p>- Machine Learning<br>
+                   - Computer Vision<br>
+                   - Natural Language Processing<br>
+                   - AI Infrastructure<br>
+                   - Generative AI</p>
+            </div>
+            <div class="portfolio-item">
+                <h3>Blockchain</h3>
+                <p>- DeFi Protocols<br>
+                   - NFT Platforms<br>
+                   - Web3 Infrastructure<br>
+                   - Cross-chain Solutions<br>
+                   - Crypto Trading Platforms</p>
+            </div>
+            <div class="portfolio-item">
+                <h3>Fintech</h3>
+                <p>- Digital Banking<br>
+                   - Payment Solutions<br>
+                   - Lending Platforms<br>
+                   - InsurTech<br>
+                   - WealthTech</p>
+            </div>
+            <div class="portfolio-item">
+                <h3>SaaS</h3>
+                <p>- Enterprise Software<br>
+                   - Cloud Solutions<br>
+                   - B2B Platforms<br>
+                   - Productivity Tools<br>
+                   - Data Analytics</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <h2>Investment Criteria</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <h3>Stage</h3>
+                <p>Seed to Series A<br>
+                   $500K - $5M investment size</p>
+            </div>
+            <div class="portfolio-item">
+                <h3>Geography</h3>
+                <p>Southeast Asia<br>
+                   Global expansion potential</p>
+            </div>
+            <div class="portfolio-item">
+                <h3>Requirements</h3>
+                <p>Strong founding team<br>
+                   Product-market fit<br>
+                   Scalable business model</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="section">
+        <h2>Investment Team</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <h3>John Smith</h3>
+                <p>Managing Partner<br>
+                   Former Gaming Executive<br>
+                   15+ years in tech investments</p>
+            </div>
+            <div class="portfolio-item">
+                <h3>Sarah Johnson</h3>
+                <p>AI & Blockchain Partner<br>
+                   PhD in Machine Learning<br>
+                   Ex-Google AI Researcher</p>
+            </div>
+            <div class="portfolio-item">
+                <h3>Michael Chen</h3>
+                <p>Fintech Partner<br>
+                   Former Fintech Founder<br>
+                   10+ years in digital banking</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
