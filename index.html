@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L41N | Gaming, AI & Crypto Investment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -17,6 +18,7 @@
             background: #0a0a0a;
             color: #fff;
             background: radial-gradient(circle at center, #1a1a2e, #0a0a0a);
+            overflow-x: hidden;
         }
 
         header {
@@ -26,18 +28,26 @@
             text-align: center;
             border-bottom: 2px solid #00fff2;
             box-shadow: 0 0 20px rgba(0,255,242,0.3);
+            position: relative;
+            z-index: 10;
         }
 
         header h1 {
+            font-family: 'Orbitron', sans-serif;
             text-shadow: 0 0 10px #00fff2;
             font-size: 3rem;
             letter-spacing: 3px;
+            animation: glow 3s infinite;
         }
 
         nav {
             background: rgba(0,0,0,0.9);
             padding: 1rem;
             border-bottom: 1px solid #bf00ff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
         }
 
         nav ul {
@@ -53,30 +63,90 @@
             font-weight: bold;
             transition: all 0.3s;
             text-shadow: 0 0 5px #bf00ff;
+            position: relative;
+            padding: 5px 0;
         }
 
-        nav a:hover {
-            color: #00fff2;
-            text-shadow: 0 0 10px #00fff2;
+        nav a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #00fff2;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:hover::before {
+            visibility: visible;
+            transform: scaleX(1);
         }
 
         .hero {
-            padding: 4rem 2rem;
-            background: linear-gradient(45deg, #0a0a0a, #1a1a2e);
-            color: #00fff2;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            border-bottom: 1px solid #00fff2;
-            text-shadow: 0 0 15px #00fff2;
+            overflow: hidden;
+            background: url('path-to-your-laniakea-image.jpg') center/cover no-repeat;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            background: rgba(0,0,0,0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0,255,242,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: glow 3s infinite;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #00fff2;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .section {
             margin: 4rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .card {
@@ -87,6 +157,12 @@
             margin: 1rem 0;
             border: 1px solid #bf00ff;
             backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(191,0,255,0.4);
         }
 
         .stats {
@@ -102,11 +178,21 @@
             border-radius: 8px;
             border: 1px solid #00fff2;
             box-shadow: 0 0 15px rgba(0,255,242,0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .stat-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stat-card:nth-child(3) {
+            animation-delay: 0.4s;
         }
 
         .stat-card h3 {
             color: #00fff2;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            font-family: 'Orbitron', sans-serif;
             text-shadow: 0 0 10px #00fff2;
         }
 
@@ -114,33 +200,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-        }
-
-        footer {
-            background: rgba(0,0,0,0.9);
-            color: #00fff2;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 2px solid #00fff2;
-            box-shadow: 0 0 20px rgba(0,255,242,0.3);
-        }
-
-        h2 {
-            color: #bf00ff;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px #bf00ff;
-        }
-
-        a {
-            color: #00fff2;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        a:hover {
-            text-decoration: none;
-            text-shadow: 0 0 10px #00fff2;
         }
 
         .portfolio-card {
@@ -154,49 +213,66 @@
         }
 
         .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(191,0,255,0.4);
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 0 30px rgba(191,0,255,0.5);
         }
 
         .portfolio-card h3 {
             color: #00fff2;
+            font-family: 'Orbitron', sans-serif;
             text-shadow: 0 0 5px #00fff2;
         }
 
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #bf00ff;
-            margin-top: 10px;
-            transition: all 0.3s;
-        }
-
-        .social-link:hover {
+        footer {
+            background: rgba(0,0,0,0.9);
             color: #00fff2;
-            text-shadow: 0 0 10px #00fff2;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 2px solid #00fff2;
+            box-shadow: 0 0 20px rgba(0,255,242,0.3);
+            position: relative;
+            z-index: 10;
         }
 
-        .investment-category {
-            margin-bottom: 2rem;
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
 
-        .investment-category h3 {
-            color: #00fff2;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 5px #00fff2;
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #00fff2, 0 0 10px #00fff2; }
+            50% { text-shadow: 0 0 20px #00fff2, 0 0 30px #00fff2; }
+            100% { text-shadow: 0 0 5px #00fff2, 0 0 10px #00fff2; }
         }
 
-        .investment-category ul li {
-            color: #fff;
-            list-style-type: none;
-            padding: 0.5rem 0;
-            border-left: 3px solid #bf00ff;
-            padding-left: 1rem;
-            margin: 0.5rem 0;
-            text-shadow: 0 0 2px #fff;
+        .cyber-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
         }
 
+        .cyber-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #00fff2, transparent);
+            height: 1px;
+            width: 100%;
+            opacity: 0.2;
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
@@ -206,10 +282,29 @@
             .stats {
                 grid-template-columns: 1fr;
             }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Particles.js container -->
+    <div id="particles-js"></div>
+
+    <!-- Cyber lines decoration -->
+    <div class="cyber-lines">
+        <div class="cyber-line" style="top: 20%"></div>
+        <div class="cyber-line" style="top: 40%"></div>
+        <div class="cyber-line" style="top: 60%"></div>
+        <div class="cyber-line" style="top: 80%"></div>
+    </div>
+
     <header>
         <h1>L41N</h1>
         <p>Gaming, AI & Crypto Investment</p>
@@ -226,8 +321,10 @@
     </nav>
 
     <section class="hero">
-        <h2>Investing in Gaming, AI & Crypto</h2>
-        <p>Specialized in Mobile & Web3 Gaming</p>
+        <div class="hero-content">
+            <h2>Investing in Gaming, AI & Crypto</h2>
+            <p>Specialized in Mobile & Web3 Gaming</p>
+        </div>
     </section>
 
     <div class="container">
@@ -317,12 +414,9 @@
             <div class="card">
                 <h3>Lam Ho</h3>
                 <p>Founding Partner</p>
-                <div style="margin-top: 10px;">
+                <div class="social-links">
                     <a href="https://www.linkedin.com/in/lam-ho-8bab66233/" target="_blank" class="social-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                        LinkedIn Profile
+                        <i class="fab fa-linkedin"></i> LinkedIn Profile
                     </a>
                 </div>
             </div>
@@ -340,5 +434,88 @@
     <footer>
         <p>&copy; 2025 L41N. All rights reserved.</p>
     </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-kit-code.js"></script>
+    <script>
+        // Particles.js configuration
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#00fff2"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00fff2",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Scroll reveal
+        const sections = document.querySelectorAll('.section');
+
+        const revealSection = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        };
+
+        const sectionObserver = new IntersectionObserver(revealSection, {
+            root: null,
+            threshold: 0.15,
+        });
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    </script>
 </body>
 </html>
