@@ -16,9 +16,60 @@
         body {
             line-height: 1.6;
             background: #0a0a0a;
-            color: #fff;
-            background: radial-gradient(circle at center, #1a1a2e, #0a0a0a);
+            color: #fff; 
             overflow-x: hidden;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #00fff2;
+            font-size: 1rem;
+            opacity: 0;
+            animation: fadeInUp 2s ease forwards;
+            animation-delay: 3s;
+            z-index: 100;
+        }
+
+        .scroll-arrow {
+            width: 30px;
+            height: 30px;
+            margin: 0 auto;
+            margin-top: 10px;
+            border-right: 2px solid #00fff2;
+            border-bottom: 2px solid #00fff2;
+            transform: rotate(45deg);
+            animation: bounce 2s infinite;
+        }
+
+        .laniakea-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #00fff2;
+            font-size: 1.2rem;
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            opacity: 0;
+            animation: fadeIn 2s ease forwards;
+            animation-delay: 1s;
+            z-index: 100;
         }
 
         header {
@@ -43,7 +94,7 @@
         nav {
             background: rgba(0,0,0,0.9);
             padding: 1rem;
-            border-bottom: 1px solid #bf00ff;
+            border-bottom: 1px solid #00fff2;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -59,10 +110,10 @@
 
         nav a {
             text-decoration: none;
-            color: #bf00ff;
+            color: #00fff2;
             font-weight: bold;
             transition: all 0.3s;
-            text-shadow: 0 0 5px #bf00ff;
+            text-shadow: 0 0 5px #00fff2;
             position: relative;
             padding: 5px 0;
         }
@@ -93,7 +144,6 @@
             justify-content: center;
             text-align: center;
             overflow: hidden;
-            background: url('path-to-your-laniakea-image.jpg') center/cover no-repeat;
         }
 
         .hero::before {
@@ -122,6 +172,7 @@
             font-size: 3.5rem;
             margin-bottom: 1rem;
             animation: glow 3s infinite;
+            color: #00fff2;
         }
 
         .hero p {
@@ -149,20 +200,27 @@
             transform: translateY(0);
         }
 
+        .section h2 {
+            color: #00fff2;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px #00fff2;
+        }
+
         .card {
             background: rgba(26,26,46,0.8);
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 0 20px rgba(191,0,255,0.2);
+            box-shadow: 0 0 20px rgba(0,255,242,0.2);
             margin: 1rem 0;
-            border: 1px solid #bf00ff;
+            border: 1px solid #00fff2;
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(191,0,255,0.4);
+            box-shadow: 0 0 30px rgba(0,255,242,0.4);
         }
 
         .stats {
@@ -181,14 +239,6 @@
             animation: float 6s ease-in-out infinite;
         }
 
-        .stat-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .stat-card:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
         .stat-card h3 {
             color: #00fff2;
             font-size: 2.5rem;
@@ -203,18 +253,18 @@
         }
 
         .portfolio-card {
-            border: 1px solid #bf00ff;
+            border: 1px solid #00fff2;
             padding: 1.5rem;
             border-radius: 8px;
             margin-bottom: 1rem;
             background: rgba(26,26,46,0.8);
-            box-shadow: 0 0 15px rgba(191,0,255,0.2);
+            box-shadow: 0 0 15px rgba(0,255,242,0.2);
             transition: all 0.3s;
         }
 
         .portfolio-card:hover {
             transform: scale(1.05) translateY(-10px);
-            box-shadow: 0 0 30px rgba(191,0,255,0.5);
+            box-shadow: 0 0 30px rgba(0,255,242,0.5);
         }
 
         .portfolio-card h3 {
@@ -235,7 +285,6 @@
             z-index: 10;
         }
 
-        /* Animations */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -248,31 +297,34 @@
             100% { text-shadow: 0 0 5px #00fff2, 0 0 10px #00fff2; }
         }
 
-        .cyber-lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .cyber-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, #00fff2, transparent);
-            height: 1px;
-            width: 100%;
-            opacity: 0.2;
-            animation: scan 3s linear infinite;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, 20px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
         }
 
-        @keyframes scan {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100vh); }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) rotate(45deg);
+            }
+            40% {
+                transform: translateY(-30px) rotate(45deg);
+            }
+            60% {
+                transform: translateY(-15px) rotate(45deg);
+            }
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
@@ -290,19 +342,24 @@
             .hero p {
                 font-size: 1.2rem;
             }
+
+            .laniakea-text {
+                font-size: 1rem;
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Particles.js container -->
-    <div id="particles-js"></div>
-
-    <!-- Cyber lines decoration -->
-    <div class="cyber-lines">
-        <div class="cyber-line" style="top: 20%"></div>
-        <div class="cyber-line" style="top: 40%"></div>
-        <div class="cyber-line" style="top: 60%"></div>
-        <div class="cyber-line" style="top: 80%"></div>
+    <canvas id="canvas"></canvas>
+    
+    <div class="laniakea-text">
+        L41N is inspired by Lani Akea - the largest known cosmic structure in the observable universe where humanity exists.
+    </div>
+    
+    <div class="scroll-indicator">
+        <span>Scroll to continue</span>
+        <div class="scroll-arrow"></div>
     </div>
 
     <header>
@@ -415,9 +472,7 @@
                 <h3>Lam Ho</h3>
                 <p>Founding Partner</p>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/lam-ho-8bab66233/" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i> LinkedIn Profile
-                    </a>
+                    <a href="https://www.linkedin.com/in/lam-ho-8bab66233/" target="_blank" class="social-link">LinkedIn Profile</a>
                 </div>
             </div>
         </section>
@@ -435,71 +490,124 @@
         <p>&copy; 2025 L41N. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://kit.fontawesome.com/your-kit-code.js"></script>
     <script>
-        // Particles.js configuration
-        particlesJS("particles-js", {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
+        // Canvas setup
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Particle settings
+        const particleArray = [];
+        const numberOfParticles = 100;
+        const maxDistance = 150;
+
+        // Mouse position
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 150
+        }
+
+        window.addEventListener('mousemove', function(event) {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        // Create particle class
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = 3;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+                this.speed = 0.5;
+                this.vx = (Math.random() - 0.5) * this.speed;
+                this.vy = (Math.random() - 0.5) * this.speed;
+            }
+
+            draw() {
+                ctx.fillStyle = '#00fff2';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                // Mouse interaction
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < mouse.radius) {
+                    const force = (mouse.radius - distance) / mouse.radius;
+                    const directionX = dx / distance;
+                    const directionY = dy / distance;
+                    this.x -= directionX * force * 5;
+                    this.y -= directionY * force * 5;
+                }
+            }
+        }
+
+        // Create particles
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particleArray.push(new Particle());
+            }
+        }
+
+        // Connect particles
+        function connect() {
+            for (let a = 0; a < particleArray.length; a++) {
+                for (let b = a; b < particleArray.length; b++) {
+                    let dx = particleArray[a].x - particleArray[b].x;
+                    let dy = particleArray[a].y - particleArray[b].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        let opacity = 1 - (distance/maxDistance);
+                        ctx.strokeStyle = `rgba(0, 255, 242, ${opacity})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particleArray[a].x, particleArray[a].y);
+                        ctx.lineTo(particleArray[b].x, particleArray[b].y);
+                        ctx.stroke();
                     }
-                },
-                color: {
-                    value: "#00fff2"
-                },
-                shape: {
-                    type: "circle"
-                },
-                opacity: {
-                    value: 0.5,
-                    random: false
-                },
-                size: {
-                    value: 3,
-                    random: true
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#00fff2",
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: false,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
                 }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: "repulse"
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: "push"
-                    },
-                    resize: true
-                }
-            },
-            retina_detect: true
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particleArray.length; i++) {
+                particleArray[i].update();
+                particleArray[i].draw();
+            }
+            connect();
+            requestAnimationFrame(animate);
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
         });
 
         // Scroll reveal
         const sections = document.querySelectorAll('.section');
-
         const revealSection = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -516,6 +624,10 @@
         sections.forEach(section => {
             sectionObserver.observe(section);
         });
+
+        // Initialize particles
+        init();
+        animate();
     </script>
 </body>
 </html>
